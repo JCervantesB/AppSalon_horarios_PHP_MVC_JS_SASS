@@ -1,0 +1,84 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedor-app {
+    @include m.tablet {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 100vh;
+    }
+    .imagen {
+        height: 20rem;
+        background-image: url(../img/1.jpg);
+        background-size: cover;
+        background-position: center center;
+        @include m.tablet {
+            height: auto;
+        }
+    }
+
+    .app {
+        width: 95%;
+        margin: 0 auto;
+        padding: 3rem 0;
+        @include m.tablet {
+            overflow: scroll;
+            overflow-x: hidden;
+
+            &::-webkit-scrollbar {
+                width: 0;  /* Remove scrollbar space */
+                background: transparent;  /* Optional: just make scrollbar invisible */
+
+            }
+            /* Optional: show position indicator in red */
+            &::-webkit-scrollbar-thumb {
+                background: v.$rojo;
+            }
+        }
+    }
+}
+
+.barra {
+    margin: v.$separacion 0;
+    max-height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .boton {
+        @include m.boton(v.$negro, v.$blanco);
+        margin: 0;
+    }
+
+    .avatar {       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5rem;
+        width: 5rem;
+        max-height: 5rem;
+        min-width: 5rem;
+        margin-left: 2rem;
+        background-color: v.$azul;
+        border-radius: 50%;
+        user-select: none;
+        
+    }
+    .inicial {
+        font-size: 4.5rem;
+        font-weight: v.$bold;
+    }
+}
+
+.barra-servicios {
+    margin-bottom: v.$separacion;
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .boton {
+        margin: 0 0 1rem 0;
+    }
+}
